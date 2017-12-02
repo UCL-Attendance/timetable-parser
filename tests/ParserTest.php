@@ -16,7 +16,7 @@ class ParserTest extends TestCase {
 
 		$entries = $parser->entries();
 
-		$this->assertCount(36, $entries);
+		$this->assertCount(37, $entries);
 
 		$firstEntry = $entries[0];
 
@@ -31,6 +31,9 @@ class ParserTest extends TestCase {
 		$this->assertEquals('Problem Tutorial 9', $firstEntry->group);
 		$this->assertEquals('FENTON, Jonathan (Dr)', $firstEntry->lecturer);
 		$this->assertEquals('South Quad Pop Up Learning Hub 103', $firstEntry->room);
+
+		$this->assertEquals(2130, $entries[21]->courseCode);
+		$this->assertEquals(2440, $entries[22]->courseCode);
 	}
     
 }

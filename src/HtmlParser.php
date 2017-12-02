@@ -46,17 +46,21 @@ class HtmlParser implements Parser{
 					$end = $date->copy()->setTimeFromTimeString($end);
 
 					$type = trim($event->filter('.evttype')->first()->text());
-					$courseTitle = trim($event->filter('.evtname')->first()->text());
-					$courseCode = (int)substr(trim($event->filter('.evtcode')->first()->text()), -4);
+					$courseTitle = trim($event->filter('.evtname')->first()->attr('title'));
 					$group = trim($event->filter('.evtgroups')->first()->text());
 					$lecturer = trim($event->filter('.evtlecturer')->first()->text());
 					$room = trim($event->filter('.evtroom')->first()->text());
 
-					$entries[] = new TimeTableEntry(compact(
-						'date', 'start', 'end', 'type', 'courseTitle',
-						'courseCode', 'group', 'lecturer', 'room'
-					));
+					// there can be multiple coursecodes eg.: 'PHAS2130, PHAS2440'
+					$courseCodes = explode(', ', trim($event->filter('.evtcode')->first()->text()));
+					foreach($courseCodes as $courseCode){
+						$courseCode = substr($courseCode, -4);
 
+						$entries[] = new TimeTableEntry(compact(
+							'date', 'start', 'end', 'type', 'courseTitle',
+							'courseCode', 'group', 'lecturer', 'room'
+						));
+					}
 
 				});
 
