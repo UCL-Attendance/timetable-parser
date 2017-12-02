@@ -1,0 +1,25 @@
+{
+    "name": "ucl-attendance/timetable-parser",
+    "description": "Library to parse department timetable presented in html.",
+    "type": "library",
+    "require": {
+        "symfony/dom-crawler": "^3.4",
+        "symfony/css-selector": "^3.4",
+        "nesbot/carbon": "^1.22"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5"
+    },
+    "license": "Unlicense",
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "UclAttendance\\TimetableParser\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "UclAttendance\\Tests\\TimetableParser\\": "tests/"
+        }
+    }
+}

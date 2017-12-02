@@ -1,0 +1,967 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Common Timetable</title>
+    <link rel="shortcut icon" href="https://timetable.ucl.ac.uk/tt/images/cticon.ico">
+<link href="CommonTimetable_files/reset.css" rel="stylesheet" type="text/css">
+<link href="CommonTimetable_files/defaults.css" rel="stylesheet" type="text/css">
+<link href="CommonTimetable_files/userMenu.css" rel="stylesheet" type="text/css">
+<script src="CommonTimetable_files/jquery-1.js" type="text/javascript">  
+</script>
+<script src="CommonTimetable_files/jquery.js" type="text/javascript">  
+</script>
+<script src="CommonTimetable_files/jquery_003.js" type="text/javascript">  
+</script>
+<script src="CommonTimetable_files/jquery_002.js" type="text/javascript">  
+</script>
+<!--[if IE 6]>
+	<script type="text/javascript" src="scripts/lib/DD/DD_belatedPNG-0.0.7a.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+  /* <![CDATA[ */
+  var $j = jQuery.noConflict();
+  /* ]]> */
+</script>
+<script src="CommonTimetable_files/TT.js" type="text/javascript"></script>
+<script src="CommonTimetable_files/TTTooltip.js" type="text/javascript"></script>
+<script src="CommonTimetable_files/TTHeader.js" type="text/javascript"></script>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  
+  TT.init('G','01','02','03','04',
+		      '01','02',
+		      'Y','N','images', '-','-','*',
+		      'firstReq','upi','finalModules', '01','02', '03','04',
+		      15, 3, 3, 8,'year', 'termOne', 'termTwo','termThree', 'week',
+		      'customTimet.do','defaultAjaxReq.do','printTimet.do',
+		      'defaultSection','persTimetSection','deptTimetSection','routeTimetSection','custTimetSection','medSchoolSection'); 
+
+  
+  TTTooltip.init();
+  
+  
+  $j(document).ready(  // Start $j(document).ready()
+    function() {  
+     	TTHeader.init();
+    }
+ 	); // End $j(document).ready()
+
+   /* ]]> */
+</script>
+
+<link href="CommonTimetable_files/popup.css" rel="stylesheet" type="text/css">
+    <link href="CommonTimetable_files/timet.css" rel="stylesheet" type="text/css">
+    <link href="CommonTimetable_files/listview.css" rel="stylesheet" type="text/css">
+    <script src="CommonTimetable_files/TTPopup.js" type="text/javascript"></script>
+    <script src="CommonTimetable_files/TTTimet.js" type="text/javascript"></script>
+    <script type="text/javascript">
+       /* <![CDATA[ */
+       
+       // Call the function common to all timetables, TTTimet.init(), when the document is ready
+       $j(document).ready(  // Start $j(document).ready()
+         function() {  
+        	 TTTimet.init('14','14',false);
+         }
+    	 ); // End $j(document).ready()
+
+	    /* ]]> */
+	  </script>  
+  </head>
+  <body>
+    <div class="wholePageContainer"> <div id="headerContainer"> <div class="headbord"> 
+		    <div class="leftSide">COMMON TIMETABLE</div>
+		    <div class="rightSide"><img src="CommonTimetable_files/uclheader.gif" alt="UCL - London's Global University" width="265" height="110"></div>
+		    <div style="clear:both"></div>
+		  </div>    
+		  <div class="headcrum">
+		    <div class="leftSide">
+			    <form action="http://search2.ucl.ac.uk/search/search.cgi" method="get">
+			       <input id="q" class="search" placeholder="Search UCL" accesskey="q" tabindex="1" title="Search UCL" name="query" type="text"><input value="ucl-public-meta" name="collection" type="hidden">
+			    </form>
+			    <span class="crumb">
+			      <a href="http://www.ucl.ac.uk/" class="crumlink">UCL Home</a> » <a href="https://timetable.ucl.ac.uk/tt/homePage.do" class="crumlink">Online Timetable</a>
+			    </span>		    
+		    </div>
+		    <div class="rightSide">
+		      <span class="acadYear">Academic Year 2017-2018</span>&nbsp;
+		      <a href="https://timetable.ucl.ac.uk/tt/login.do" class="crumb crumlink">Log in</a>    
+					  </div>
+		    <div style="clear:both"></div>
+		  </div>
+		  <div id="userMenuContainer">
+	<div id="userMenu">
+	  <div id="userMenuPanel">
+	    <div class="tl">
+	      <div class="tr">
+	        <div class="signed">
+	          
+		            not signed in
+		          </div>
+	      </div>
+	    </div>
+	    <div class="bl">
+	      <div class="br">
+	        <div class="name">
+	        
+		            Guest
+		          </div>
+	        <img src="CommonTimetable_files/pixel.gif" id="userMenuPanelArrow" class="down">
+	      </div>
+	    </div>
+	  </div>
+	  <div id="userMenuDropdown" style="display:none"> <a id="userMenuItemDeptTimet" href="https://timetable.ucl.ac.uk/tt/homePage.do?sectId=deptTimetSection" class="option">
+		    Department timetable
+		  </a>
+		  <a id="userMenuItemRouteTimet" href="https://timetable.ucl.ac.uk/tt/homePage.do?sectId=routeTimetSection" class="option">
+		    Degree timetable
+		  </a>
+      <a id="userMenuItemCustTimet" href="https://timetable.ucl.ac.uk/tt/createCustomTimet.do" class="option">
+		    Custom timetable
+		  </a> 
+      <a id="userMenuItemFAQ" href="http://www.ucl.ac.uk/srs/portico/timetable-faqs" class="option">
+		    FAQ
+		  </a>
+	    <div id="userMenuTextForItem" class="desc">&nbsp;</div>
+	  </div> </div>
+</div><div id="functionTitle">
+			    <h1 class="title">Department Timetable</h1>
+			  </div>
+		  </div> <div id="mainTimetContainer" class="content"> <div class="displaybox"> <div class="tabsAndLinks">
+  			  <ul class="tabs">
+  			    <li id="currDisp" class="tab on"><span>Current Display</span></li>
+  			    <li id="chngDisp" class="tab off"><span>Change Display</span></li>
+          </ul>
+          <div class="activeicons printTimetLink">
+    	      <img src="CommonTimetable_files/printIcon.png" alt="Print page">
+	          <a href="#">Print</a>
+          </div>
+
+
+          <div style="clear:both"></div>
+        </div>
+			  <div class="content"> <form id="frmTimetable" name="frmTimetable" method="post" action="deptTimet.do">
+				    <input id="temporalView" name="temporalView" value="week" type="hidden">
+					  <input id="firstReq" name="firstReq" value="N" type="hidden">
+					  <input id="deptId" name="deptId" value="PHYSA_MAP" type="hidden">
+					      <input id="deptYear" name="deptYear" value="2" type="hidden">
+					      <div class="details"> <div class="basics">
+				        <div class="main">Physics and Astronomy</div>
+						        <div class="sub">2</div>
+						        <div class="code">PHYSA_MAP</div>
+		 					    </div>
+				      <div class="dates"> <div class="alt-name">ACADEMIC WEEK 14</div>
+				        <div class="range">
+				          <span class="prep">between</span>
+				            27/11/2017 - 03/12/2017</div>
+				        <div class="button btn-r">
+						        <div class="tl">
+						          <div class="tr">
+						            <div class="bl">
+						              <div class="br"><img id="btnNextWeek" src="CommonTimetable_files/btnarw-r.gif"></div>
+						            </div>            
+						          </div>
+						        </div>
+					        </div>
+					        <div class="button btn-r">
+						        <div class="tl">
+						          <div class="tr">
+						            <div class="bl">
+						              <div class="br"><img id="btnPrevWeek" src="CommonTimetable_files/btnarw-l.gif"></div>
+						            </div>
+						          </div>
+						        </div>
+					        </div> 
+				        <div class="button btn-r">
+				          <div class="tl">
+				            <div class="tr">
+				              <div class="bl">
+				                <div class="br"><span id="btnCurrentWeek"><a>Current Week</a></span></div>
+				              </div>
+				            </div>
+				          </div>
+				        </div>
+				      </div> <div class="zoomContainer">
+				        <div id="zoom_events">
+	<div class="boxes">
+	  <span id="zm-sm" class="sm" onclick="TTTimet.zoomEvents('sm'); this.className='sm on';">&nbsp;</span>
+	  <span id="zm-md" class="md" onclick="TTTimet.zoomEvents('md'); this.className='md on';">&nbsp;</span>
+	  <span id="zm-lg" class="lg" onclick="TTTimet.zoomEvents('lg'); this.className='lg on';">&nbsp;</span>
+	</div>
+</div>
+</div> 
+				    </div> <!-- END div class="details" -->	  
+						<div id="chngDispDrop" class="drop hide"> <!-- CALL TO ERRORS TAG  -->
+			        <div class="top-row"> <div class="button btn-l">
+						      <div class="tl">
+						        <div class="tr">
+						          <div class="bl">
+						            <div class="br"><span id="btnTempViewYear"><a>Full Year</a></span></div>
+						          </div>
+						        </div>
+						      </div>
+						    </div>
+						    <div class="button btn-l">
+						      <div class="tl">
+						        <div class="tr">
+						          <div class="bl">
+						            <div class="br"><span id="btnTempViewTermOne"><a>Term One</a></span></div>
+						          </div>
+						        </div>
+						      </div>
+						    </div>
+						    <div class="button btn-l">
+						      <div class="tl">
+						        <div class="tr">
+						          <div class="bl">
+						            <div class="br"><span id="btnTempViewTermTwo"><a>Term Two</a></span></div>
+						          </div>
+						        </div>
+						      </div>
+						    </div>
+						    <div class="button btn-l">
+						      <div class="tl">
+						        <div class="tr">
+						          <div class="bl">
+						            <div class="br"><span id="btnTempViewTermThree"><a>Term Three</a></span></div>
+						          </div>
+						        </div>
+						      </div>
+						    </div>
+						    <div class="field">
+						    	<label for="weekRange">enter range</label>
+					          <input id="weekRange" name="weekRange" value="14" class="" type="text">
+					        </div>
+						    <div class="button btn-l btn-bg">
+						      <div class="tl">
+						        <div class="tr">
+						          <div class="bl">
+						            <div class="br"><img src="CommonTimetable_files/btnarw-r.gif" class="arrow"></div>
+						          </div>
+						        </div>
+						       </div>
+						    </div>
+						    <div class="field">
+						      <label for="isGroupEvents">Group Events</label>
+							      <input id="isGroupEvents" name="isGroupEvents" type="checkbox">
+							    	<input name="_isGroupEvents" type="hidden">
+							    </div>
+								<div class="button btn-l btn-bg">
+							    <div class="tl">
+							      <div class="tr">
+							        <div class="bl">
+							          <div class="br"><img src="CommonTimetable_files/btnarw-r.gif" class="arrow"></div>
+							        </div>
+							      </div>
+							    </div>
+								</div>	
+						    <input id="inptViewType" name="viewType" value="L" type="hidden">
+				        	<div class="slctlistgrid">
+						      <div class="button btn-l">
+						        <div class="tl">
+						          <div class="tr">
+						            <div class="bl">
+						              <div class="br"><span id="btnViewTypeGrid"><a>View timetable as grid</a></span></div>
+						            </div>
+						          </div>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
+						  <div id="yearCalendarWeekContainer" class="year_calendar"> <span id="termOneAsWeekRange" style="display:none">5-16</span>
+  <span id="termTwoAsWeekRange" style="display:none">20-30</span>
+  <span id="termThreeAsWeekRange" style="display:none">35-41</span>
+  <h3>select week from calendar</h3>
+  <p>
+<a id="yearCalendarWeek1" class="">01<span style="display:none">28/08/2017 - 03/09/2017</span></a>  
+<a id="yearCalendarWeek2" class="">02<span style="display:none">04/09/2017 - 10/09/2017</span></a>  
+<a id="yearCalendarWeek3" class="">03<span style="display:none">11/09/2017 - 17/09/2017</span></a>  
+<a id="yearCalendarWeek4" class="">04<span style="display:none">18/09/2017 - 24/09/2017</span></a>  
+<a id="yearCalendarWeek5" class="weekTermOne ">05<span style="display:none">25/09/2017 - 01/10/2017</span></a>  
+<a id="yearCalendarWeek6" class="weekTermOne ">06<span style="display:none">02/10/2017 - 08/10/2017</span></a>  
+<a id="yearCalendarWeek7" class="weekTermOne ">07<span style="display:none">09/10/2017 - 15/10/2017</span></a>  
+<a id="yearCalendarWeek8" class="weekTermOne ">08<span style="display:none">16/10/2017 - 22/10/2017</span></a>  
+<a id="yearCalendarWeek9" class="weekTermOne ">09<span style="display:none">23/10/2017 - 29/10/2017</span></a>  
+<a id="yearCalendarWeek10" class="weekTermOne ">10<span style="display:none">30/10/2017 - 05/11/2017</span></a>  
+<a id="yearCalendarWeek11" class="weekTermOne ">11<span style="display:none">06/11/2017 - 12/11/2017</span></a>  
+<a id="yearCalendarWeek12" class="weekTermOne ">12<span style="display:none">13/11/2017 - 19/11/2017</span></a>  
+<a id="yearCalendarWeek13" class="weekTermOne ">13<span style="display:none">20/11/2017 - 26/11/2017</span></a>  
+<a id="yearCalendarWeek14" class="weekTermOne ">14<span style="display:none">27/11/2017 - 03/12/2017</span></a>  
+<a id="yearCalendarWeek15" class="weekTermOne ">15<span style="display:none">04/12/2017 - 10/12/2017</span></a>  
+<a id="yearCalendarWeek16" class="weekTermOne ">16<span style="display:none">11/12/2017 - 17/12/2017</span></a>  
+<a id="yearCalendarWeek17" class="">17<span style="display:none">18/12/2017 - 24/12/2017</span></a>  
+<a id="yearCalendarWeek18" class="">18<span style="display:none">25/12/2017 - 31/12/2017</span></a>  
+<a id="yearCalendarWeek19" class="">19<span style="display:none">01/01/2018 - 07/01/2018</span></a>  
+<a id="yearCalendarWeek20" class="weekTermTwo ">20<span style="display:none">08/01/2018 - 14/01/2018</span></a>  
+<a id="yearCalendarWeek21" class="weekTermTwo ">21<span style="display:none">15/01/2018 - 21/01/2018</span></a>  
+<a id="yearCalendarWeek22" class="weekTermTwo ">22<span style="display:none">22/01/2018 - 28/01/2018</span></a>  
+<a id="yearCalendarWeek23" class="weekTermTwo ">23<span style="display:none">29/01/2018 - 04/02/2018</span></a>  
+<a id="yearCalendarWeek24" class="weekTermTwo ">24<span style="display:none">05/02/2018 - 11/02/2018</span></a>  
+<a id="yearCalendarWeek25" class="weekTermTwo ">25<span style="display:none">12/02/2018 - 18/02/2018</span></a>  
+<a id="yearCalendarWeek26" class="weekTermTwo ">26<span style="display:none">19/02/2018 - 25/02/2018</span></a>  
+<a id="yearCalendarWeek27" class="weekTermTwo ">27<span style="display:none">26/02/2018 - 04/03/2018</span></a>  
+<a id="yearCalendarWeek28" class="weekTermTwo ">28<span style="display:none">05/03/2018 - 11/03/2018</span></a>  
+<a id="yearCalendarWeek29" class="weekTermTwo ">29<span style="display:none">12/03/2018 - 18/03/2018</span></a>  
+<a id="yearCalendarWeek30" class="weekTermTwo ">30<span style="display:none">19/03/2018 - 25/03/2018</span></a>  
+</p>
+  <p>  
+<a id="yearCalendarWeek31" class="">31<span style="display:none">26/03/2018 - 01/04/2018</span></a>  
+<a id="yearCalendarWeek32" class="">32<span style="display:none">02/04/2018 - 08/04/2018</span></a>  
+<a id="yearCalendarWeek33" class="">33<span style="display:none">09/04/2018 - 15/04/2018</span></a>  
+<a id="yearCalendarWeek34" class="">34<span style="display:none">16/04/2018 - 22/04/2018</span></a>  
+<a id="yearCalendarWeek35" class="weekTermThree ">35<span style="display:none">23/04/2018 - 29/04/2018</span></a>  
+<a id="yearCalendarWeek36" class="weekTermThree ">36<span style="display:none">30/04/2018 - 06/05/2018</span></a>  
+<a id="yearCalendarWeek37" class="weekTermThree ">37<span style="display:none">07/05/2018 - 13/05/2018</span></a>  
+<a id="yearCalendarWeek38" class="weekTermThree ">38<span style="display:none">14/05/2018 - 20/05/2018</span></a>  
+<a id="yearCalendarWeek39" class="weekTermThree ">39<span style="display:none">21/05/2018 - 27/05/2018</span></a>  
+<a id="yearCalendarWeek40" class="weekTermThree ">40<span style="display:none">28/05/2018 - 03/06/2018</span></a>  
+<a id="yearCalendarWeek41" class="weekTermThree ">41<span style="display:none">04/06/2018 - 10/06/2018</span></a>  
+<a id="yearCalendarWeek42" class="">42<span style="display:none">11/06/2018 - 17/06/2018</span></a>  
+<a id="yearCalendarWeek43" class="">43<span style="display:none">18/06/2018 - 24/06/2018</span></a>  
+<a id="yearCalendarWeek44" class="">44<span style="display:none">25/06/2018 - 01/07/2018</span></a>  
+<a id="yearCalendarWeek45" class="">45<span style="display:none">02/07/2018 - 08/07/2018</span></a>  
+<a id="yearCalendarWeek46" class="">46<span style="display:none">09/07/2018 - 15/07/2018</span></a>  
+<a id="yearCalendarWeek47" class="">47<span style="display:none">16/07/2018 - 22/07/2018</span></a>  
+<a id="yearCalendarWeek48" class="">48<span style="display:none">23/07/2018 - 29/07/2018</span></a>  
+<a id="yearCalendarWeek49" class="">49<span style="display:none">30/07/2018 - 05/08/2018</span></a>  
+<a id="yearCalendarWeek50" class="">50<span style="display:none">06/08/2018 - 12/08/2018</span></a>  
+<a id="yearCalendarWeek51" class="">51<span style="display:none">13/08/2018 - 19/08/2018</span></a>  
+<a id="yearCalendarWeek52" class="">52<span style="display:none">20/08/2018 - 26/08/2018</span></a>  
+</p>
+</div> </div> </form>					  
+	      </div> </div> <!-- start importing timetable   -->
+	      		<!-- start timetable. Set the default cell dimension using the class attribute in the element timetableContainer-->
+<div id="listview">
+	<div class="listmonth">
+						<div class="monhead">
+							<h3>November&nbsp;2017</h3>
+						</div>
+	
+						<div class="monevts">
+							<div class="listday">
+										<div class="daytitle">
+									    	<div class="dayname">
+									    		Monday</div>
+									     	<div class="daydate">
+									       		27&nbsp;November&nbsp;2017</div>
+									   	</div>
+									   	<div class="dayevts">
+	
+										    <div class="dayevt">
+											    	<div class="evttime">09:00 - 10:00</div>
+											    	<div class="evttype">Problem Based Learning</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Quantum Physics">
+											        		Quantum Physics</span>
+											        	<span class="evtcode">PHAS2222</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 9">
+											       			Problem Tutorial 9</div>
+											        	<div class="evtlecturer">FENTON, Jonathan (Dr)</div>
+											       		<div class="evtroom">South Quad Pop Up Learning Hub 103</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">10:00 - 13:00</div>
+											    	<div class="evttype">Laboratory Session</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Practical Physics 2A">
+											        		Practical Physics 2A</span>
+											        	<span class="evtcode">PHAS2440</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="GRP1">
+											       			Group 1</div>
+											        	<div class="evtlecturer">ARMOOGUM, Daven (Dr)</div>
+											       		<div class="evtroom">Physics Building Lab 2</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">13:00 - 14:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Quantum Physics">
+											        		Quantum Physics</span>
+											        	<span class="evtcode">PHAS2222</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">SCHOFIELD, Steven (Dr)</div>
+											       		<div class="evtroom">Christopher Ingold Building XLG1 Chemistry LT</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">14:00 - 16:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Mathematical Methods III">
+											        		Mathematical Methods III</span>
+											        	<span class="evtcode">PHAS2246</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 5">
+											       			Problem Tutorial 5</div>
+											        	<div class="evtlecturer">MORLEY, James G (Mr), ZUBKO, Pavlo (Dr)</div>
+											       		<div class="evtroom">South Quad Pop Up Learning Hub 103</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">15:00 - 16:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Quantum Physics">
+											        		Quantum Physics</span>
+											        	<span class="evtcode">PHAS2222</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 5">
+											       			Problem Tutorial 5</div>
+											        	<div class="evtlecturer">FENTON, Jonathan (Dr)</div>
+											       		<div class="evtroom">South Quad Pop Up Learning Hub 102</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">16:00 - 18:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Mathematical Methods III">
+											        		Mathematical Methods III</span>
+											        	<span class="evtcode">PHAS2246</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">YURCHENKO, Sergey (Dr)</div>
+											       		<div class="evtroom">Darwin Building B40 LT</div>
+											       	</div>
+												</div>
+											</div>
+									</div>
+								<div class="listday">
+										<div class="daytitle">
+									    	<div class="dayname">
+									    		Tuesday</div>
+									     	<div class="daydate">
+									       		28&nbsp;November&nbsp;2017</div>
+									   	</div>
+									   	<div class="dayevts">
+	
+										    <div class="dayevt">
+											    	<div class="evttime">09:00 - 11:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Electricity and Magnetism">
+											        		Electricity and Magnetism</span>
+											        	<span class="evtcode">PHAS2201</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">JONES, Philip (Prof), BAILEY, Elinor (Dr)</div>
+											       		<div class="evtroom">Darwin Building B40 LT</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">11:00 - 13:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Quantum Physics">
+											        		Quantum Physics</span>
+											        	<span class="evtcode">PHAS2222</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">SCHOFIELD, Steven (Dr)</div>
+											       		<div class="evtroom">Christopher Ingold Building XLG1 Chemistry LT</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">13:00 - 14:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Developing Effective Communication 2">
+											        		Developing Effective Communication 2</span>
+											        	<span class="evtcode">PHAS2901</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">BAILEY, Elinor (Dr)</div>
+											       		<div class="evtroom">Christopher Ingold Building XLG1 Chemistry LT</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">15:00 - 16:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Quantum Physics">
+											        		Quantum Physics</span>
+											        	<span class="evtcode">PHAS2222</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 7">
+											       			Problem Tutorial 7</div>
+											        	<div class="evtlecturer">FENTON, Jonathan (Dr)</div>
+											       		<div class="evtroom">Senate House G04</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">15:00 - 17:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Mathematical Methods III">
+											        		Mathematical Methods III</span>
+											        	<span class="evtcode">PHAS2246</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 7">
+											       			Problem Tutorial 7</div>
+											        	<div class="evtlecturer">MORLEY, James G (Mr), ZUBKO, Pavlo (Dr)</div>
+											       		<div class="evtroom">Foster Court 114</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">18:00 - 21:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Interstellar Astronomy and Extra-solar Planets and the Search for Life">
+											        		Interstellar Astronomy and Extra-solar Planets ...</span>
+											        	<span class="evtcode">PHAS2525</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">EBERHARDT, Jo (Dr), BEVAN, Antonia (Dr)</div>
+											       		<div class="evtroom">South Wing 9 Garwood LT</div>
+											       	</div>
+												</div>
+											</div>
+									</div>
+								<div class="listday">
+										<div class="daytitle">
+									    	<div class="dayname">
+									    		Wednesday</div>
+									     	<div class="daydate">
+									       		29&nbsp;November&nbsp;2017</div>
+									   	</div>
+									   	<div class="dayevts">
+	
+										    <div class="dayevt">
+											    	<div class="evttime">09:00 - 10:00</div>
+											    	<div class="evttype">lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Mathematical Methods III">
+											        		Mathematical Methods III</span>
+											        	<span class="evtcode">PHAS2246</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">YURCHENKO, Sergey (Dr)</div>
+											       		<div class="evtroom">Christopher Ingold Building XLG2 Auditorium</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">10:00 - 12:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Mathematical Methods III">
+											        		Mathematical Methods III</span>
+											        	<span class="evtcode">PHAS2246</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 1">
+											       			Problem Tutorial 1</div>
+											        	<div class="evtlecturer">SEDDON, James R (Mr), FORD, Ian (Prof)</div>
+											       		<div class="evtroom">Chadwick Building G07</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">10:00 - 13:00</div>
+											    	<div class="evttype">Laboratory Session</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Practical Physics 2A">
+											        		Practical Physics 2A</span>
+											        	<span class="evtcode">PHAS2440</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="GRP1">
+											       			Group 1</div>
+											        	<div class="evtlecturer">ARMOOGUM, Daven (Dr)</div>
+											       		<div class="evtroom">Physics Building Lab 2</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">11:00 - 12:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Quantum Physics">
+											        		Quantum Physics</span>
+											        	<span class="evtcode">PHAS2222</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 1">
+											       			Problem Tutorial 1</div>
+											        	<div class="evtlecturer">SHLUGER, Alexander (Prof)</div>
+											       		<div class="evtroom">South Quad Pop Up Learning Hub 102</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">11:00 - 13:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Mathematical Methods for Theoretical Physics">
+											        		Mathematical Methods for Theoretical Physics</span>
+											        	<span class="evtcode">PHAS2423</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">GREEN, Andrew (Prof)</div>
+											       		<div class="evtroom">Taviton (14) 132</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">11:00 - 13:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Planetary Science">
+											        		Planetary Science</span>
+											        	<span class="evtcode">PHAS2117</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">FARIHI, Jay (Dr)</div>
+											       		<div class="evtroom">Physics Building A1/3</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">11:00 - 13:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Mathematical Methods III">
+											        		Mathematical Methods III</span>
+											        	<span class="evtcode">PHAS2246</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 2">
+											       			Problem Tutorial 2</div>
+											        	<div class="evtlecturer">CREMONESI, Linda (Dr), EMMANOUILIDOU, Agapi (Dr)</div>
+											       		<div class="evtroom">Birkbeck Malet Street B29</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">12:00 - 13:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Quantum Physics">
+											        		Quantum Physics</span>
+											        	<span class="evtcode">PHAS2222</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 2">
+											       			Problem Tutorial 2</div>
+											        	<div class="evtlecturer">SHLUGER, Alexander (Prof)</div>
+											       		<div class="evtroom">South Quad Pop Up Learning Hub 102</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">13:00 - 17:00</div>
+											    	<div class="evttype">Tutorial</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Personal Tutoring">
+											        		Personal Tutoring</span>
+											        	<span class="evtcode"></span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">Missing lecturer name</div>
+											       		<div class="evtroom">Missing room name</div>
+											       	</div>
+												</div>
+											</div>
+									</div>
+								<div class="listday">
+										<div class="daytitle">
+									    	<div class="dayname">
+									    		Thursday</div>
+									     	<div class="daydate">
+									       		30&nbsp;November&nbsp;2017</div>
+									   	</div>
+									   	<div class="dayevts">
+	
+										    <div class="dayevt">
+											    	<div class="evttime">09:00 - 10:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Practical Astrophysics and Computing / Practical Physics 2A">
+											        		Practical Astrophysics and Computing / Practica...</span>
+											        	<span class="evtcode">PHAS2130, PHAS2440</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">ARMOOGUM, Daven (Dr)</div>
+											       		<div class="evtroom">Anatomy G29 J Z Young LT</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">10:00 - 13:00</div>
+											    	<div class="evttype">Laboratory Session</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Practical Physics 2A">
+											        		Practical Physics 2A</span>
+											        	<span class="evtcode">PHAS2440</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="GRP2">
+											       			Group 2</div>
+											        	<div class="evtlecturer">ARMOOGUM, Daven (Dr)</div>
+											       		<div class="evtroom">Physics Building Lab 2</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">11:00 - 13:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Mathematical Methods III">
+											        		Mathematical Methods III</span>
+											        	<span class="evtcode">PHAS2246</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 3">
+											       			Problem Tutorial 3</div>
+											        	<div class="evtlecturer">CREMONESI, Linda (Dr), YURCHENKO, Sergey (Dr)</div>
+											       		<div class="evtroom">South Quad Pop Up Learning Hub G01 LT</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">13:00 - 14:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Quantum Physics">
+											        		Quantum Physics</span>
+											        	<span class="evtcode">PHAS2222</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">SCHOFIELD, Steven (Dr)</div>
+											       		<div class="evtroom">Christopher Ingold Building XLG1 Chemistry LT</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">15:00 - 16:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Quantum Physics">
+											        		Quantum Physics</span>
+											        	<span class="evtcode">PHAS2222</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 8">
+											       			Problem Tutorial 8</div>
+											        	<div class="evtlecturer">SCHOFIELD, Steven (Dr)</div>
+											       		<div class="evtroom">South Quad Pop Up Learning Hub 102</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">16:00 - 17:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Quantum Physics">
+											        		Quantum Physics</span>
+											        	<span class="evtcode">PHAS2222</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 6">
+											       			Problem Tutorial 6</div>
+											        	<div class="evtlecturer">SHLUGER, Alexander (Prof)</div>
+											       		<div class="evtroom">South Quad Pop Up Learning Hub 102</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">16:00 - 18:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Mathematical Methods III">
+											        		Mathematical Methods III</span>
+											        	<span class="evtcode">PHAS2246</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 6">
+											       			Problem Tutorial 6</div>
+											        	<div class="evtlecturer">FORD, Ian (Prof), LIU, Wei (Mr)</div>
+											       		<div class="evtroom">Gordon Street (25) D103</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">17:00 - 18:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Quantum Physics">
+											        		Quantum Physics</span>
+											        	<span class="evtcode">PHAS2222</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 3">
+											       			Problem Tutorial 3</div>
+											        	<div class="evtlecturer">SCHOFIELD, Steven (Dr)</div>
+											       		<div class="evtroom">South Quad Pop Up Learning Hub 102</div>
+											       	</div>
+												</div>
+											</div>
+									</div>
+								</div>
+					</div>
+		
+				<div class="listmonth">
+						<div class="monhead">
+							<h3>December&nbsp;2017</h3>
+						</div>
+	
+						<div class="monevts">
+							<div class="listday">
+										<div class="daytitle">
+									    	<div class="dayname">
+									    		Friday</div>
+									     	<div class="daydate">
+									       		1&nbsp;December&nbsp;2017</div>
+									   	</div>
+									   	<div class="dayevts">
+	
+										    <div class="dayevt">
+											    	<div class="evttime">09:00 - 10:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Mathematical Methods III">
+											        		Mathematical Methods III</span>
+											        	<span class="evtcode">PHAS2246</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">YURCHENKO, Sergey (Dr)</div>
+											       		<div class="evtroom">Christopher Ingold Building XLG2 Auditorium</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">10:00 - 11:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Quantum Physics">
+											        		Quantum Physics</span>
+											        	<span class="evtcode">PHAS2222</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 4">
+											       			Problem Tutorial 4</div>
+											        	<div class="evtlecturer">SCHOFIELD, Steven (Dr)</div>
+											       		<div class="evtroom">South Quad Pop Up Learning Hub 102</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">10:00 - 12:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Mathematical Methods III">
+											        		Mathematical Methods III</span>
+											        	<span class="evtcode">PHAS2246</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 4">
+											       			Problem Tutorial 4</div>
+											        	<div class="evtlecturer">EMMANOUILIDOU, Agapi (Dr)</div>
+											       		<div class="evtroom">IOE - Bedford Way (20) - 539</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">10:00 - 13:00</div>
+											    	<div class="evttype">Laboratory Session</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Practical Physics 2A">
+											        		Practical Physics 2A</span>
+											        	<span class="evtcode">PHAS2440</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="GRP2">
+											       			Group 2</div>
+											        	<div class="evtlecturer">ARMOOGUM, Daven (Dr)</div>
+											       		<div class="evtroom">Physics Building Lab 2</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">11:00 - 13:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Mathematical Methods for Theoretical Physics">
+											        		Mathematical Methods for Theoretical Physics</span>
+											        	<span class="evtcode">PHAS2423</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">GREEN, Andrew (Prof)</div>
+											       		<div class="evtroom">Physics Building D3</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">13:00 - 15:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Electricity and Magnetism">
+											        		Electricity and Magnetism</span>
+											        	<span class="evtcode">PHAS2201</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="">
+											       			</div>
+											        	<div class="evtlecturer">JONES, Philip (Prof), BAILEY, Elinor (Dr)</div>
+											       		<div class="evtroom">Christopher Ingold Building XLG1 Chemistry LT</div>
+											       	</div>
+												</div>
+											<div class="dayevt">
+											    	<div class="evttime">15:00 - 17:00</div>
+											    	<div class="evttype">Lecture</div>
+											    	<div class="evttitle">
+											        	<span class="evtname" title="Mathematical Methods III">
+											        		Mathematical Methods III</span>
+											        	<span class="evtcode">PHAS2246</span>
+											       	</div>
+										        	<div class="evtdetails">
+											       		<div class="evtgroups" title="PROB 8">
+											       			Problem Tutorial 8</div>
+											        	<div class="evtlecturer">YURCHENKO, Sergey (Dr), LIU, Wei (Mr)</div>
+											       		<div class="evtroom">Darwin Building B15</div>
+											       	</div>
+												</div>
+											</div>
+									</div>
+								</div>
+					</div>
+		
+				</div>
+<!-- end timetable -->
+
+<!-- end importing timetable   -->
+	    	</div>  <div id="footerContainer" class="foot">
+	  University College London - Gower Street - London - WC1E 6BT -  +44 (0)20 7679 2000 - Copyright © 1999-2017 UCL<br>
+	  <a href="http://www.ucl.ac.uk/disclaimer/">Disclaimer</a> | <a href="http://www.ucl.ac.uk/accessibility/">Accessibility</a> | <a href="http://www.ucl.ac.uk/priv/">Privacy</a> | <a href="http://www.ucl.ac.uk/advanced-search/">Advanced Search</a> | <a href="http://www.ucl.ac.uk/help/">Help</a>
+	</div>
+	<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script><script src="CommonTimetable_files/ga.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    try {
+      var pageTracker = _gat._getTracker("UA-8970000-13");
+      pageTracker._trackPageview();
+    } catch(err) {}
+  </script>
+	</div> 	
+<div class="pop_bg"></div><div class="pop"> 			<div class="tl">  				<div class="tr"> 					<div class="pop-t">  						<div class="close"> 							<a href="#" class="a_popup_close"> 								<img src="CommonTimetable_files/x.gif" alt="close" width="10" height="9"> 							</a> 						</div> 						<div class="title" id="popup_title">						</div> 					</div>  				</div> 			</div>  						<div class="bl">  				<div class="br"> 					<div class="body" id="popup_body">  					</div>  				</div> 			</div>  		</div></body></html>
